@@ -1,2 +1,3 @@
 # faircloud
-just cloud
+spring cloud
+service mesh
