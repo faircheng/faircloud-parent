@@ -1,0 +1,84 @@
+plugins {
+    id 'java-library'
+    id 'org.springframework.boot' version '2.5.3' apply false
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+ext {
+    set('springCloudVersion', '2020.0.3')
+    set('springCloudAlibabaVersion','2.2.1.RELEASE')
+}
+
+version '0.0.1-SNAPSHOT'
+
+//所有项目配置
+allprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'idea'
+
+    group 'com.faircloud.platform'
+    version '0.0.1-SNAPSHOT'
+
+    // 指定JDK版本
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    // 指定编码格式
+    compileJava.options.encoding = 'UTF-8'
+    compileTestJava.options.encoding = 'UTF-8'
+
+    // 仓库地址
+    repositories {
+        mavenLocal()
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
+        mavenCentral()
+    }
+
+}
+
+//所有的子项目，都应用了以下插件
+subprojects {
+    // 使用插件
+    apply plugin: 'io.spring.dependency-management'
+
+    // lombook需要可插拔式注解处理器
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    dependencyManagement {
+        dependencies {
+            dependency 'com.google.guava:guava:30.1.1-jre'
+            dependency 'com.github.xiaoymin:knife4j-spring-boot-starter:3.0.3'
+        }
+
+        imports {
+            mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+        }
+    }
+
+    dependencies {
+        implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+        implementation 'org.springframework.boot:spring-boot-starter'
+        implementation 'org.springframework.boot:spring-boot-starter-validation'
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        testCompileOnly 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    jar {
+        enabled = true
+    }
+}
+
+

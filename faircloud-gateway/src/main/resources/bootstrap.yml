@@ -1,0 +1,15 @@
+server:
+  port: 9092 #服务端口,PORT没有指定值则使用8761
+spring:
+  application:
+    name: faircloud-gateway-server #指定服务名
+  cloud:
+    gateway:
+      routes:
+        # 路由Id
+        - id: springcloud-provider-routes
+          #代理服务器地址
+          uri: lb://springcloud-provider
+          #断言规则
+          predicates:
+            - Path=/provider/**

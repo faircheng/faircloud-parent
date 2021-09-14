@@ -1,0 +1,5 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    api 'com.github.xiaoymin:knife4j-spring-boot-starter'
+}
