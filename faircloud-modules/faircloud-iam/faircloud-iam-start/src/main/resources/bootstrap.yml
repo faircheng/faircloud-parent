@@ -1,0 +1,62 @@
+#可以理解成系统级别的一些参数配置，这些参数一般是不会变动的
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: faircloud-iam-service #指定服务名
+  main:
+    allow-bean-definition-overriding: true
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+  cloud:
+    loadbalancer:
+      nacos:
+        enabled: true #开启nacos的负载均衡策略
+    nacos: #nacos配置
+      server-addr: 8.137.16.185:8848
+      username: nacos
+      password: Cxh@159083
+      discovery:
+        namespace: dev
+      config:
+        namespace: dev
+
+#mybatis配置
+mybatis-plus:
+  configuration:
+    #开启驼峰命名自动映射
+    map-underscore-to-camel-case: true
+    #开启日志打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#熔断降级配置
+feign:
+  sentinel:
+    enabled: true
+
+#swagger配置
+knife4j:
+  # 开启增强配置
+  enable: true
+  # 开启生产环境屏蔽
+  production: false
+  setting:
+    language: zh_cn
+
+#配置中心
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

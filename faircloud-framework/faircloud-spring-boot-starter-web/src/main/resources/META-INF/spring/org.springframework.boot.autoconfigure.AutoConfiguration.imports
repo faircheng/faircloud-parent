@@ -1,0 +1,6 @@
+#com.faircloud.platform.web.config.WebMvcConfig
+#com.faircloud.platform.web.controller.GlobalExceptionController
+#com.faircloud.platform.web.controller.GlobalExceptionHandler
+#com.faircloud.platform.web.exception.CustomAccessDeniedHandler
+#com.faircloud.platform.web.exception.CustomAuthenticationEntryPoint
+com.faircloud.platform.web.WebAutoConfiguration

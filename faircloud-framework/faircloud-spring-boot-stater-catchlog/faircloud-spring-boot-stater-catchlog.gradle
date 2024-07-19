@@ -1,0 +1,5 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    api "com.baomidou:mybatis-plus-boot-starter"
+}

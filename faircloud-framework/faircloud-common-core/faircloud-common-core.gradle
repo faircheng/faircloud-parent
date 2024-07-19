@@ -1,0 +1,6 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    api 'com.github.xiaoymin:knife4j-openapi3-jakarta-spring-boot-starter'
+    api 'org.springframework.boot:spring-boot-starter-validation'
+}

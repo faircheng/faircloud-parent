@@ -1,14 +1,16 @@
 plugins {
     id 'java-library'
-    id 'org.springframework.boot' version '2.5.3' apply false
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version '3.3.1' apply false
+    id 'io.spring.dependency-management' version '1.1.5'
 }
 
 ext {
-    set('springCloudVersion', '2020.0.3')
-    set('springCloudAlibabaVersion','2.2.1.RELEASE')
-    set('authorizationServerVersion','0.2.0')
-    set('druidVersion','1.2.6')
+    set('springCloudVersion', '2023.0.2')
+    set('springCloudAlibabaVersion','2023.0.1.0')
+    set('druidVersion','1.2.23')
+    set('mybatisPlusVersion', '3.5.7')
+    set('knife4jVersion', '4.5.0')
+    set('guavaVersion', '33.2.1-jre')
 }
 
 version '0.0.1-SNAPSHOT'
@@ -22,8 +24,8 @@ allprojects {
     version '0.0.1-SNAPSHOT'
 
     // 指定JDK版本
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    sourceCompatibility = '19'
+    targetCompatibility = '19'
     // 指定编码格式
     compileJava.options.encoding = 'UTF-8'
     compileTestJava.options.encoding = 'UTF-8'
@@ -49,8 +51,16 @@ subprojects {
 
     dependencyManagement {
         dependencies {
-            dependency 'com.google.guava:guava:30.1.1-jre'
-            dependency 'com.github.xiaoymin:knife4j-spring-boot-starter:3.0.3'
+            dependency "com.google.guava:guava:${guavaVersion}"
+            dependency "com.github.xiaoymin:knife4j-openapi3-jakarta-spring-boot-starter:${knife4jVersion}"
+            dependency "com.alibaba:druid-spring-boot-starter:${druidVersion}"
+            dependency "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
+            dependency "io.github.openfeign:feign-okhttp:13.3"
+            dependency "org.mapstruct:mapstruct:1.6.0.Beta2"
+            dependency "org.mapstruct:mapstruct-processor:1.6.0.Beta2"
+            dependency "org.projectlombok:lombok-mapstruct-binding:0.2.0"
+            dependency "org.mybatis:mybatis-spring:3.0.3"
+            dependency "com.alibaba.fastjson2:fastjson2:2.0.51"
         }
 
         imports {
@@ -61,15 +71,17 @@ subprojects {
     }
 
     dependencies {
-        implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
-        implementation 'org.springframework.boot:spring-boot-starter'
-        implementation 'org.springframework.boot:spring-boot-starter-validation'
         annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        implementation 'com.alibaba.fastjson2:fastjson2'
+        implementation 'com.google.guava:guava'
+        compileOnly 'org.mapstruct:mapstruct'
+        annotationProcessor 'org.mapstruct:mapstruct-processor'
+        annotationProcessor "org.projectlombok:lombok-mapstruct-binding"
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
         testCompileOnly 'org.projectlombok:lombok'
         testAnnotationProcessor 'org.projectlombok:lombok'
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
     }
 
     test {

@@ -3,13 +3,20 @@ server:
 spring:
   application:
     name: faircloud-gateway-server #指定服务名
+  main:
+    allow-bean-definition-overriding: true
+    web-application-type: reactive
   cloud:
-    gateway:
-      routes:
-        # 路由Id
-        - id: springcloud-provider-routes
-          #代理服务器地址
-          uri: lb://springcloud-provider
-          #断言规则
-          predicates:
-            - Path=/provider/**
+    loadbalancer:
+      nacos:
+        enabled: true #开启nacos的负载均衡策略
+    nacos:
+      server-addr: 8.137.16.185:8848
+      username: nacos
+      password: Cxh@159083
+      discovery:
+        namespace: dev
+        group: faircloud
+      config:
+        namespace: dev
+        group: faircloud

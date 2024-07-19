@@ -1,0 +1,7 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    api project(':faircloud-iam-client')
+    api project(':faircloud-iam-domain')
+    api project(':faircloud-iam-infrastructure')
+}
