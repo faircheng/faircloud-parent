@@ -1,21 +1,25 @@
 package com.faircloud.iam.user.client.api;
 
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import com.faircloud.iam.user.client.fallback.AccountClientFallback;
-import com.faircloud.iam.user.client.fallback.UserClientFallback;
-import com.faircloud.iam.user.client.module.CreateUserRequest;
 import com.faircloud.iam.user.client.module.GetUserResponse;
 import com.faircloud.iam.user.client.module.RegisterAccountRequest;
 import com.faircloud.iam.user.client.module.RegisterMobileRequest;
 import com.faircloud.platform.common.module.Response;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSort;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.*;
 
 /**
  * 账号接口
@@ -24,7 +28,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Tag(name = "账号接口")
 @ApiSort(value = 1)
-@FeignClient(name = "faircloud-iam-account-service", fallbackFactory = AccountClientFallback.class)
+@FeignClient(name = "faircloud-iam-service", fallbackFactory = AccountClientFallback.class)
 public interface AccountClient {
 
     @Operation(summary = "手机号注册")

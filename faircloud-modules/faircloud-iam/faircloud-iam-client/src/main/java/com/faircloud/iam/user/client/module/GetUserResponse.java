@@ -1,14 +1,17 @@
 package com.faircloud.iam.user.client.module;
 
 import com.faircloud.platform.common.module.DTO;
-import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
 
-import static lombok.AccessLevel.PRIVATE;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  * 获取用户信息返回
+ *
  * @author Fair Cheng
  */
 @Data

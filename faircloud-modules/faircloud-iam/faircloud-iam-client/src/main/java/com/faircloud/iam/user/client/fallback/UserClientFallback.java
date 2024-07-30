@@ -1,11 +1,16 @@
 package com.faircloud.iam.user.client.fallback;
 
-import com.faircloud.iam.user.client.api.UserClient;
-import com.faircloud.iam.user.client.module.*;
-import com.faircloud.platform.common.module.Response;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
+
+import com.faircloud.iam.user.client.api.UserClient;
+import com.faircloud.iam.user.client.module.CreateUserRequest;
+import com.faircloud.iam.user.client.module.GetUserResponse;
+import com.faircloud.iam.user.client.module.ListUserResponse;
+import com.faircloud.iam.user.client.module.LoadUserResponse;
+import com.faircloud.platform.common.module.Response;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 触发服务降级时会调用相应的方法
@@ -21,7 +26,7 @@ public class UserClientFallback implements FallbackFactory<UserClient> {
         return new UserClient() {
 
             @Override
-            public Response<GetUserResponse> getUser(String userName) {
+            public Response<GetUserResponse> getByUserName(String userName) {
                 return null;
             }
 
@@ -42,6 +47,11 @@ public class UserClientFallback implements FallbackFactory<UserClient> {
 
             @Override
             public Response<ListUserResponse> listUsers() {
+                return null;
+            }
+
+            @Override
+            public Response<LoadUserResponse> loadUserByUsername(String userName) {
                 return null;
             }
         };

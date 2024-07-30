@@ -29,8 +29,23 @@ spring:
       password: Cxh@159083
       discovery:
         namespace: dev
+        group: faircloud
       config:
         namespace: dev
+        group: faircloud
+  security:
+    oauth2:
+      client:
+        registration:
+          iam-client:
+            provider: custom-oauth
+            client-id: iam-client
+            client-secret: secret
+            client-name: 身份管理与访问控制服务
+            authorization-grant-type: client_credentials
+        provider:
+          custom-oauth:
+            issuer-uri: http://open.faircloud.com:9000
 
 #mybatis配置
 mybatis-plus:

@@ -2,6 +2,7 @@ package com.faircloud.iam.user.application.service;
 
 import com.faircloud.iam.user.client.module.GetUserResponse;
 import com.faircloud.iam.user.client.module.ListUserResponse;
+import com.faircloud.iam.user.client.module.LoadUserResponse;
 import com.faircloud.platform.common.application.ApplicationQryService;
 import com.faircloud.platform.common.module.Response;
 
@@ -36,4 +37,11 @@ public interface UserAppQryService extends ApplicationQryService {
      * @return 用户数据
      */
     Response<ListUserResponse> listUsers();
+
+    /**
+     * 登录用，根据用户名获取用户信息
+     * @param userName 用户名
+     * @return 用户信息
+     */
+    Response<LoadUserResponse> loadUserByUsername(String userName);
 }

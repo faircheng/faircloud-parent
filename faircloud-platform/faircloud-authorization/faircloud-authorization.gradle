@@ -1,0 +1,27 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config'
+    implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security:spring-security-oauth2-authorization-server'
+    implementation "org.springframework.boot:spring-boot-starter-oauth2-client"
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
+    implementation "com.alibaba:druid-spring-boot-starter"
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+
+    implementation project(":faircloud-boot-starter-web")
+    implementation project(':faircloud-iam-client')
+    implementation project(':faircloud-boot-stater-feign')
+
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.springframework.security:spring-security-test"
+    testImplementation "org.junit.jupiter:junit-jupiter"
+    testImplementation "net.sourceforge.htmlunit:htmlunit"
+}

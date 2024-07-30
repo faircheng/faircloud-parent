@@ -9,19 +9,44 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.faircloud.platform.web.security.handler.CustomAccessDeniedHandler;
+import com.faircloud.platform.web.security.handler.CustomAuthenticationEntryPoint;
+
 /**
  * @author Steve Riesenberg
  * @since 1.3
  */
+@Configuration
 @EnableWebSecurity
-@Configuration(proxyBeanMethods = false)
 public class ResourceServerConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.securityMatcher("/**")
-            .authorizeHttpRequests(authorize -> authorize.requestMatchers("/**").hasAuthority("SCOPE_iam"))
-            .oauth2ResourceServer(oauth2ResourceServer -> oauth2ResourceServer.jwt(Customizer.withDefaults()));
+        http
+            // 禁用csrf
+            .csrf((csrf) -> csrf.disable())
+            // 禁用cors
+            .cors((cors) -> cors.disable())
+            // 权限配置
+            .authorizeHttpRequests(authorize -> authorize
+                // 用户登录放行
+                .requestMatchers("/users/load/*").permitAll()
+                // 其他的拦截
+                .anyRequest().authenticated())
+            // 资源服务器配置
+            .oauth2ResourceServer(oauth2ResourceServer -> oauth2ResourceServer
+                // 无权限访问当前资源
+                .accessDeniedHandler(new CustomAccessDeniedHandler())
+                // 用户未登录
+                .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
+                // 默认解析
+                .jwt(Customizer.withDefaults()))
+            .exceptionHandling((exceptions) -> exceptions
+                // 无权限访问当前资源
+                .accessDeniedHandler(new CustomAccessDeniedHandler())
+                // 用户未登录
+                .authenticationEntryPoint(new CustomAuthenticationEntryPoint()))
+            .oauth2Client(Customizer.withDefaults());
         return http.build();
     }
 

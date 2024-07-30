@@ -1,17 +1,19 @@
 package com.faircloud.iam.user.application.service.impl;
 
-import com.faircloud.iam.user.application.converter.UserAppConverter;
-import com.faircloud.iam.user.application.service.UserAppQryService;
-import com.faircloud.iam.user.client.module.ListUserResponse;
-import com.faircloud.iam.user.domain.model.aggregate.UserAggregate;
-import com.faircloud.iam.user.domain.persistence.UserPersistence;
-import com.faircloud.iam.user.client.module.GetUserResponse;
-import com.faircloud.platform.common.exception.Assert;
-import com.faircloud.platform.common.module.Response;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.faircloud.iam.user.application.converter.UserAppConverter;
+import com.faircloud.iam.user.application.service.UserAppQryService;
+import com.faircloud.iam.user.client.module.GetUserResponse;
+import com.faircloud.iam.user.client.module.ListUserResponse;
+import com.faircloud.iam.user.client.module.LoadUserResponse;
+import com.faircloud.iam.user.domain.model.aggregate.UserAggregate;
+import com.faircloud.iam.user.domain.persistence.UserPersistence;
+import com.faircloud.platform.common.module.Response;
+
+import lombok.RequiredArgsConstructor;
 
 /**
  * user application query service impl
@@ -46,5 +48,11 @@ public class UserAppQryServiceImpl implements UserAppQryService {
     public Response<ListUserResponse> listUsers() {
         List<UserAggregate> list = userPersistence.listUsers();
         return Response.success(UserAppConverter.INSTANCE.to(list));
+    }
+
+    @Override
+    public Response<LoadUserResponse> loadUserByUsername(String userName) {
+        UserAggregate aggregate = userPersistence.loadUserByUsername(userName);
+        return Response.success(UserAppConverter.INSTANCE.load(aggregate));
     }
 }
