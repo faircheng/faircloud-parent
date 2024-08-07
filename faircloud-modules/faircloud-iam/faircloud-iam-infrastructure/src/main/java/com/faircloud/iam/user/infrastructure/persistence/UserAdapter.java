@@ -1,12 +1,16 @@
 package com.faircloud.iam.user.infrastructure.persistence;
 
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.faircloud.iam.user.domain.model.aggregate.UserAggregate;
-import com.faircloud.iam.user.domain.model.entity.LoginProfileEntity;
-import com.faircloud.iam.user.domain.model.entity.UserInfoEntity;
 import com.faircloud.iam.user.domain.model.valueobject.MobilePhone;
 import com.faircloud.iam.user.domain.persistence.UserPersistence;
-import com.faircloud.iam.user.infrastructure.persistence.converter.UserInfraConverter;
+import com.faircloud.iam.user.infrastructure.persistence.converter.UserConverter;
 import com.faircloud.iam.user.infrastructure.persistence.mapper.LoginProfileMapper;
 import com.faircloud.iam.user.infrastructure.persistence.mapper.UserInfoMapper;
 import com.faircloud.iam.user.infrastructure.persistence.mapper.UserMapper;
@@ -14,16 +18,17 @@ import com.faircloud.iam.user.infrastructure.persistence.po.LoginProfile;
 import com.faircloud.iam.user.infrastructure.persistence.po.User;
 import com.faircloud.iam.user.infrastructure.persistence.po.UserInfo;
 import com.faircloud.platform.common.exception.Assert;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import com.faircloud.platform.common.module.PageQuery;
 
-import java.util.List;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 用户仓储适配器
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class UserAdapter implements UserPersistence {
@@ -36,50 +41,53 @@ public class UserAdapter implements UserPersistence {
 
     @Override
     public void save(UserAggregate aggregate) {
-        User user = UserInfraConverter.INSTANCE.to(aggregate);
+        User user = UserConverter.INSTANCE.to(aggregate);
         userMapper.insert(user);
 
-        LoginProfile loginProfile = UserInfraConverter.INSTANCE.to(aggregate.getLoginProfile());
+        LoginProfile loginProfile = UserConverter.INSTANCE.to(aggregate.getLoginProfile());
         loginProfileMapper.insert(loginProfile);
 
-        UserInfo userInfo = UserInfraConverter.INSTANCE.to(aggregate.getUserInfo());
+        UserInfo userInfo = UserConverter.INSTANCE.to(aggregate.getUserInfo());
         userInfoMapper.insert(userInfo);
     }
 
     @Override
     public UserAggregate getById(Long id) {
         User user = userMapper.selectById(id);
-        return UserInfraConverter.INSTANCE.to(user);
+        return UserConverter.INSTANCE.to(user);
     }
 
     @Override
     public UserAggregate getByUserName(String userName) {
         User user = userMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getUserName, userName));
-        return UserInfraConverter.INSTANCE.to(user);
+        return UserConverter.INSTANCE.to(user);
     }
 
     @Override
     public UserAggregate getByMobilePhone(String mobilePhone) {
         User user = userMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getMobilePhone, mobilePhone));
-        return UserInfraConverter.INSTANCE.to(user);
+        return UserConverter.INSTANCE.to(user);
     }
 
     @Override
     public UserAggregate loadUserByUsername(String username) {
-        User user = userMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getUserName, username));
-        Assert.notNull(user, "");
+        User user = userMapper.selectOne(new LambdaQueryWrapper<User>().eq(User::getEnabled, true).eq(User::getUserName, username));
+        Assert.notNull(user);
         LoginProfile loginProfile = loginProfileMapper.selectOne(new LambdaQueryWrapper<LoginProfile>().eq(LoginProfile::getUserId, user.getId()));
-        Assert.notNull(loginProfile, "");
+        Assert.notNull(loginProfile);
         UserInfo userInfo = userInfoMapper.selectOne(new LambdaQueryWrapper<UserInfo>().eq(UserInfo::getUserId, user.getId()));
-        Assert.notNull(userInfo, "");
-        UserAggregate aggregate = UserInfraConverter.INSTANCE.to(user, loginProfile, userInfo);
+        Assert.notNull(userInfo);
+        UserAggregate aggregate = UserConverter.INSTANCE.to(user, loginProfile, userInfo);
         return aggregate;
     }
 
     @Override
-    public List<UserAggregate> listUsers() {
-        List<User> list = userMapper.selectList(new LambdaQueryWrapper<>());
-        return UserInfraConverter.INSTANCE.to(list);
+    @Transactional(rollbackFor = Exception.class)
+    public List<UserAggregate> listUsers(UserAggregate query, PageQuery pageQuery) {
+        User user = UserConverter.INSTANCE.to(query);
+        Page<User> page = new Page<>(pageQuery.getPageNumber(), pageQuery.getPageSize());
+        Page<User> list = userMapper.listUsers(page, user);
+        return null;
     }
 
     @Override
@@ -99,4 +107,5 @@ public class UserAdapter implements UserPersistence {
         }
         return false;
     }
+
 }

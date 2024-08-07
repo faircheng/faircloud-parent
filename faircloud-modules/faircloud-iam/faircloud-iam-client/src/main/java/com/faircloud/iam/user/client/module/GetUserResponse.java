@@ -10,13 +10,13 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
- * 获取用户信息返回
+ * 获取用户信息 返回
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Data
 @Builder
-@Schema(description = "获取用户信息返回 请求参数")
+@Schema(description = "获取用户信息 返回参数")
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor

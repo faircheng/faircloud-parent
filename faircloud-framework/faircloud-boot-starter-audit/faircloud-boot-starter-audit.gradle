@@ -1,0 +1,5 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    api project(":faircloud-boot-starter-mybatis-plus")
+}

@@ -1,16 +1,21 @@
 package com.faircloud.iam.user.client.fallback;
 
-import com.faircloud.iam.user.client.api.LoginProfileClient;
-import com.faircloud.iam.user.client.api.UserClient;
-import com.faircloud.iam.user.client.module.*;
-import com.faircloud.platform.common.module.Response;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
+import com.faircloud.iam.user.client.api.LoginProfileClient;
+import com.faircloud.iam.user.client.module.ChangePasswordRequest;
+import com.faircloud.iam.user.client.module.CreateLoginProfileRequest;
+import com.faircloud.iam.user.client.module.DeleteLoginProfileRequest;
+import com.faircloud.iam.user.client.module.GetLoginProfileRequest;
+import com.faircloud.iam.user.client.module.UpdateLoginProfileRequest;
+import com.faircloud.platform.common.module.Response;
+
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 触发服务降级时会调用相应的方法
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Slf4j
 @Component
@@ -27,7 +32,7 @@ public class LoginProfileClientFallback implements FallbackFactory<LoginProfileC
             }
 
             @Override
-            public Response getLoginProfile(String userName) {
+            public Response getLoginProfile(GetLoginProfileRequest request) {
                 return null;
             }
 
@@ -37,7 +42,7 @@ public class LoginProfileClientFallback implements FallbackFactory<LoginProfileC
             }
 
             @Override
-            public Response deleteLoginProfile(String userName) {
+            public Response deleteLoginProfile(DeleteLoginProfileRequest request) {
                 return null;
             }
 

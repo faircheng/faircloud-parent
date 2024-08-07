@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 /**
  * 用户密码强度等策略信息 领域接口实现
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Service
 @RequiredArgsConstructor

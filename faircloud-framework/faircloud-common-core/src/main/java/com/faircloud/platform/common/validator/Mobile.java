@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 /**
  * 自定义手机号码校验器
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  **/
 @Target({  FIELD, PARAMETER })
 @Retention(RUNTIME)

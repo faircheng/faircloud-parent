@@ -6,7 +6,7 @@ import lombok.Getter;
 /**
  * 状态码 枚举
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @AllArgsConstructor
 public enum StatusCodeEnum implements StatusCode {

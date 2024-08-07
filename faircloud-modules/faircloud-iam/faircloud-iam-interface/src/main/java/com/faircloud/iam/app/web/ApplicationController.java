@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 应用 前端控制器
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Slf4j
 @RestController

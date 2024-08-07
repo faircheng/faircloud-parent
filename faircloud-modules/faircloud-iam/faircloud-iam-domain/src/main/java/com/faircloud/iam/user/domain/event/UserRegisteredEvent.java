@@ -1,13 +1,15 @@
 package com.faircloud.iam.user.domain.event;
 
-import com.faircloud.iam.user.domain.model.aggregate.UserAggregate;
-import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
+
+import com.faircloud.iam.user.domain.model.aggregate.UserAggregate;
+
+import lombok.Getter;
 
 /**
  * 用户注册事件
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 public class UserRegisteredEvent extends ApplicationEvent {
 

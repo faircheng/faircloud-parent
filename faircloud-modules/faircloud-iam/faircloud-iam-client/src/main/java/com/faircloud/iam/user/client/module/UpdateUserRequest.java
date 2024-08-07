@@ -2,19 +2,21 @@ package com.faircloud.iam.user.client.module;
 
 import com.faircloud.platform.common.module.Command;
 import com.faircloud.platform.common.validator.Mobile;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.*;
-import lombok.experimental.SuperBuilder;
-
-import static lombok.AccessLevel.PRIVATE;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  * 更新用户的基本信息 请求参数
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Data
 @Builder
@@ -25,12 +27,12 @@ import static lombok.AccessLevel.PRIVATE;
 public class UpdateUserRequest extends Command {
 
     @NotBlank
-    @Schema(description = "用户名")
+    @Schema(description = "用户名", requiredMode = Schema.RequiredMode.REQUIRED)
     @Size(min = 1, max = 64)
     private String UserName;
 
     @NotBlank
-    @Schema(description = "用户的新名称")
+    @Schema(description = "用户的新名称", requiredMode = Schema.RequiredMode.REQUIRED)
     @Size(min = 1, max = 64)
     private String newUserName;
 

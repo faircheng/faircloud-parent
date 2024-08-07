@@ -6,7 +6,7 @@ import com.faircloud.platform.common.service.DomainService;
 /**
  * 用户密码强度等策略信息 领域接口
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 public interface PasswordPolicyDomainService extends DomainService {
 

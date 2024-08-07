@@ -1,14 +1,14 @@
 package com.faircloud.platform.common.util;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * 校验器 工具类
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 public class ValidatorUtils {
 

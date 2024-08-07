@@ -11,7 +11,7 @@ package com.faircloud.platform.common.exception;
  * <p>
  * 四位数字编号从 0001 到 9999，大类之间的步长间距预留 100，
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 public class ServiceErrorCode {
 

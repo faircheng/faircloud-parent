@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * Boolean的枚举
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @RequiredArgsConstructor
 public enum BooleanEnum {

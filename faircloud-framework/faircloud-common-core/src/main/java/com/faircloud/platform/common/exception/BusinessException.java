@@ -8,7 +8,7 @@ import lombok.Setter;
 /**
  * 统一异常处理 业务异常处理
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @EqualsAndHashCode(callSuper = true)
 public class BusinessException extends RuntimeException {

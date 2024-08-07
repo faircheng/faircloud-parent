@@ -9,8 +9,8 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.faircloud.platform.web.security.handler.CustomAccessDeniedHandler;
-import com.faircloud.platform.web.security.handler.CustomAuthenticationEntryPoint;
+import com.faircloud.platform.auth.security.handler.CustomAccessDeniedHandler;
+import com.faircloud.platform.auth.security.handler.CustomAuthenticationEntryPoint;
 
 /**
  * @author Steve Riesenberg
@@ -29,8 +29,12 @@ public class ResourceServerConfig {
             .cors((cors) -> cors.disable())
             // 权限配置
             .authorizeHttpRequests(authorize -> authorize
+                // 放行swagger静态资源
+                .requestMatchers("/doc.html", "/webjars/**", "/v3/**", "/swagger-resources/**").permitAll()
+                // 用于监控和管理运行中的应用程序
+                .requestMatchers("/actuator/**").permitAll()
                 // 用户登录放行
-                .requestMatchers("/users/load/*").permitAll()
+                .requestMatchers("/**").permitAll()
                 // 其他的拦截
                 .anyRequest().authenticated())
             // 资源服务器配置

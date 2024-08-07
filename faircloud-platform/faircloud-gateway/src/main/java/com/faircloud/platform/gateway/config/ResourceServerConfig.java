@@ -15,7 +15,7 @@ import com.faircloud.platform.gateway.security.handler.CustomAuthenticationEntry
 /**
  * 资源服务器配置
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  * @since 1.3
  */
 @Configuration

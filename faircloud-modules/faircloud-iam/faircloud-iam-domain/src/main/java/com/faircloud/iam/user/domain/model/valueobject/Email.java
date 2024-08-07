@@ -6,7 +6,7 @@ import lombok.Value;
 /**
  * 邮件
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Value
 @Builder

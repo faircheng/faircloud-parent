@@ -3,7 +3,7 @@ package com.faircloud.platform.common.enums;
 /**
  * 状态码的接口，所有状态码都需要实现它
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 public interface StatusCode {
 

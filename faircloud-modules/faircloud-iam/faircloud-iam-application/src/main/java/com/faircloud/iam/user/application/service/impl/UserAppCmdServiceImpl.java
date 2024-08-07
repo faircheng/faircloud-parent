@@ -1,18 +1,22 @@
 package com.faircloud.iam.user.application.service.impl;
 
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.faircloud.iam.user.application.service.UserAppCmdService;
 import com.faircloud.iam.user.client.module.CreateUserRequest;
+import com.faircloud.iam.user.client.module.DeleteUserRequest;
 import com.faircloud.iam.user.client.module.RegisterAccountRequest;
 import com.faircloud.iam.user.client.module.RegisterMobileRequest;
+import com.faircloud.iam.user.client.module.UpdateUserRequest;
 import com.faircloud.iam.user.domain.event.UserRegisteredEvent;
 import com.faircloud.iam.user.domain.factory.UserFactory;
 import com.faircloud.iam.user.domain.model.aggregate.UserAggregate;
 import com.faircloud.iam.user.domain.persistence.UserPersistence;
 import com.faircloud.platform.common.module.Response;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -57,9 +61,9 @@ public class UserAppCmdServiceImpl implements UserAppCmdService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Response createUser(CreateUserRequest request) {
+    public Response createUser(CreateUserRequest request, Long userId) {
         // 用户名 校验
-        UserAggregate aggregate = userFactory.createUser(request.getUserName(), request.getDisplayName(),
+        UserAggregate aggregate = userFactory.createUser(userId, request.getUserName(), request.getDisplayName(),
                 request.getMobilePhone(), request.getEmail(), request.getComments());
         // 保存数据
         userPersistence.save(aggregate);
@@ -67,12 +71,12 @@ public class UserAppCmdServiceImpl implements UserAppCmdService {
     }
 
     @Override
-    public Response updateUser(CreateUserRequest request) {
+    public Response updateUser(UpdateUserRequest request) {
         return null;
     }
 
     @Override
-    public Response deleteUser(String userName) {
+    public Response deleteUser(DeleteUserRequest request) {
         return null;
     }
 

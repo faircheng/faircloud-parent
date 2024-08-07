@@ -1,22 +1,24 @@
 package com.faircloud.iam.user.web;
 
+import org.springframework.web.bind.annotation.RestController;
+
 import com.faircloud.iam.user.application.service.UserAppCmdService;
 import com.faircloud.iam.user.application.service.UserAppQryService;
 import com.faircloud.iam.user.client.api.AccountClient;
-import com.faircloud.iam.user.client.api.UserClient;
-import com.faircloud.iam.user.client.module.CreateUserRequest;
+import com.faircloud.iam.user.client.module.DeleteAccountRequest;
+import com.faircloud.iam.user.client.module.GetUserRequest;
 import com.faircloud.iam.user.client.module.GetUserResponse;
 import com.faircloud.iam.user.client.module.RegisterAccountRequest;
 import com.faircloud.iam.user.client.module.RegisterMobileRequest;
 import com.faircloud.platform.common.module.Response;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 账号控制器
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Slf4j
 @RestController
@@ -40,13 +42,13 @@ public class AccountController implements AccountClient {
     }
 
     @Override
-    public Response<GetUserResponse> getByUserName(String userName) {
+    public Response<GetUserResponse> getAccount(GetUserRequest request) {
 
-        return userAppQryService.getByUserName(userName);
+        return userAppQryService.getUser(request);
     }
 
     @Override
-    public Response<Void> cancellation(String userName) {
+    public Response<Void> cancellation(DeleteAccountRequest request) {
         // TODO 有点复杂
         return null;
     }

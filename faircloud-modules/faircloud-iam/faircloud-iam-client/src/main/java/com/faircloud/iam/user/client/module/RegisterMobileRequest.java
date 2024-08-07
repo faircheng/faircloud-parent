@@ -13,7 +13,7 @@ import static lombok.AccessLevel.PRIVATE;
 /**
  * 手机号注册账号 请求参数
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Data
 @Builder

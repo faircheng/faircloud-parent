@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 /**
  * loadUserByUsername 返回
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Data
 @Builder
@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class LoadUserResponse extends DTO {
 
     @Schema(description = "主键")
-    private String id;
+    private Long id;
 
     @Schema(description = "用户名")
     private String userName;
@@ -43,7 +43,16 @@ public class LoadUserResponse extends DTO {
     @Schema(description = "电子邮箱是否通过验证")
     private Boolean emailIsVerify;
 
-    @Schema(description = "账户是否可用")
+    @Schema(description = "用户过期")
+    private Boolean accountNonExpired;
+
+    @Schema(description = "用户锁定")
+    private Boolean accountNonLocked;
+
+    @Schema(description = "密码过期")
+    private Boolean credentialsNonExpired;
+
+    @Schema(description = "控制台访问：开启或禁用")
     private Boolean enabled;
 
     @Schema(description = "账号的描述信息")

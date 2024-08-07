@@ -1,19 +1,21 @@
 package com.faircloud.iam.user.client.fallback;
 
+import org.springframework.cloud.openfeign.FallbackFactory;
+import org.springframework.stereotype.Component;
+
 import com.faircloud.iam.user.client.api.AccountClient;
-import com.faircloud.iam.user.client.api.UserClient;
-import com.faircloud.iam.user.client.module.CreateUserRequest;
+import com.faircloud.iam.user.client.module.DeleteAccountRequest;
+import com.faircloud.iam.user.client.module.GetUserRequest;
 import com.faircloud.iam.user.client.module.GetUserResponse;
 import com.faircloud.iam.user.client.module.RegisterAccountRequest;
 import com.faircloud.iam.user.client.module.RegisterMobileRequest;
 import com.faircloud.platform.common.module.Response;
+
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cloud.openfeign.FallbackFactory;
-import org.springframework.stereotype.Component;
 
 /**
  * 触发服务降级时会调用相应的方法
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Slf4j
 @Component
@@ -35,12 +37,12 @@ public class AccountClientFallback implements FallbackFactory<AccountClient> {
             }
 
             @Override
-            public Response<GetUserResponse> getByUserName(String userName) {
+            public Response<GetUserResponse> getAccount(GetUserRequest request) {
                 return null;
             }
 
             @Override
-            public Response<Void> cancellation(String userName) {
+            public Response<Void> cancellation(DeleteAccountRequest request) {
                 return null;
             }
         };

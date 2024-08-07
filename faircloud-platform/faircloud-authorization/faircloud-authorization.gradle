@@ -17,8 +17,9 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 
     implementation project(":faircloud-boot-starter-web")
+    implementation project(":faircloud-boot-starter-auth")
     implementation project(':faircloud-iam-client')
-    implementation project(':faircloud-boot-stater-feign')
+    implementation project(':faircloud-boot-starter-feign')
 
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     testImplementation "org.springframework.security:spring-security-test"

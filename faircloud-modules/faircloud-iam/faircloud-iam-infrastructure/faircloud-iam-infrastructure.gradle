@@ -5,9 +5,11 @@ dependencies {
     api 'org.springframework.boot:spring-boot-starter-oauth2-client'
     api 'com.alibaba:druid-spring-boot-starter'
     runtimeOnly 'com.mysql:mysql-connector-j'
-    api project(":faircloud-boot-stater-audit")
+    api project(":faircloud-boot-starter-mybatis-plus")
+    api project(":faircloud-boot-starter-auth")
+    api project(":faircloud-boot-starter-audit")
     api project(":faircloud-boot-starter-web")
-    api project(':faircloud-boot-stater-i18n')
+    api project(':faircloud-boot-starter-i18n')
     api project(":faircloud-iam-domain")
     api project(':faircloud-iam-client')
 }

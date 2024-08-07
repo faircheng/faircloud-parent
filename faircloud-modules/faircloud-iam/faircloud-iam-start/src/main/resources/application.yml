@@ -4,7 +4,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://8.137.16.185:3306/faircloud_iam?allowMultiQueries=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&nullCatalogMeansCurrent=true # MySQL Connector/J 8.X 连接的示例
+    url: jdbc:mysql://8.137.16.185:3306/faircloud_iam?allowMultiQueries=true&rewriteBatchedStatements=true&useCursorFetch=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&failOverReadOnly=false&nullCatalogMeansCurrent=true # MySQL Connector/J 8.X 连接的示例
     username: root
     password: Cxh@159083
   data:

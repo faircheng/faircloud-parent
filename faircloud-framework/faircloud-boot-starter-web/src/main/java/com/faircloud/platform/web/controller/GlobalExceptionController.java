@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 全局异常处理
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  * @date 2020-3-1 20:16:42
  */
 @Slf4j

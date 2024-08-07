@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 用户Mapper接口
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Mapper
 public interface LoginProfileMapper extends BaseMapper<LoginProfile> {

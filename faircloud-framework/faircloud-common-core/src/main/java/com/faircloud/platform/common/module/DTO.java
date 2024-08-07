@@ -7,7 +7,7 @@ import java.io.Serializable;
  * <p>
  * Command and Query is CQRS concept.
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 public abstract class DTO implements Serializable {
 

@@ -3,7 +3,7 @@ package com.faircloud.platform.common.model;
 /**
  * 聚合
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 public interface Aggregate {
 

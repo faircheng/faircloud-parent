@@ -3,7 +3,7 @@ package com.faircloud.platform.common.persistence;
 /**
  * 持久化
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 public interface Persistence {
 }

@@ -1,15 +1,17 @@
 package com.faircloud.iam.user.client.module;
 
+import com.faircloud.platform.common.module.DTO;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 /**
  * 列出用户信息参数
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Data
 @Schema(description = "列出用户信息参数")
-public class ListUserResponse {
+public class ListUserResponse extends DTO {
 
     @Schema(description = "主键")
     private String id;

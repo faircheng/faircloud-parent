@@ -8,7 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * 手机号校验器
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 public class MobileValidator implements ConstraintValidator<Mobile, String> {
 

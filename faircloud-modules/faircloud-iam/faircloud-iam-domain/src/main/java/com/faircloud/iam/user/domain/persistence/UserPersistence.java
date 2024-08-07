@@ -1,15 +1,16 @@
 package com.faircloud.iam.user.domain.persistence;
 
+import java.util.List;
+
 import com.faircloud.iam.user.domain.model.aggregate.UserAggregate;
 import com.faircloud.iam.user.domain.model.valueobject.MobilePhone;
+import com.faircloud.platform.common.module.PageQuery;
 import com.faircloud.platform.common.persistence.Persistence;
-
-import java.util.List;
 
 /**
  * user 持久化接口
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 public interface UserPersistence extends Persistence {
 
@@ -49,15 +50,17 @@ public interface UserPersistence extends Persistence {
     /**
      * 列出用户
      *
+     * @param query 查询参数
+     * @param page 分页参数
      * @return 用户
      */
-    List<UserAggregate> listUsers();
+    List<UserAggregate> listUsers(UserAggregate query, PageQuery page);
 
     /**
      * 用户名校验
      *
      * @param userName 用户名
-     * @param id       主键
+     * @param id 主键
      * @return Boolean
      */
     Boolean checkUserName(String userName, Long id);
@@ -66,7 +69,7 @@ public interface UserPersistence extends Persistence {
      * 手机号校验
      *
      * @param mobilePhone 手机号
-     * @param id          主键
+     * @param id 主键
      * @return Boolean
      */
     Boolean checkMobilePhone(MobilePhone mobilePhone, Long id);

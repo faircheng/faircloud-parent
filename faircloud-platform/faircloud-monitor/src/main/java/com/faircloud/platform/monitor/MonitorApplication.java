@@ -7,7 +7,7 @@ import de.codecentric.boot.admin.server.config.EnableAdminServer;
 
 /**
  * admin monitor 启动类
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @EnableAdminServer
 @SpringBootApplication

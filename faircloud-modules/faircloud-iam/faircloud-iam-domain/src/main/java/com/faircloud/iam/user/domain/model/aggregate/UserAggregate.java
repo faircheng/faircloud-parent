@@ -7,18 +7,16 @@ import com.faircloud.iam.user.domain.model.valueobject.MobilePhone;
 import com.faircloud.platform.common.contants.PlatformConstants;
 import com.faircloud.platform.common.model.Aggregate;
 import com.faircloud.platform.common.model.Entity;
+
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import static lombok.AccessLevel.PRIVATE;
-
 /**
  * 用户 聚合根
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Getter
 @SuperBuilder

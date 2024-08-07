@@ -1,4 +1,4 @@
-package com.faircloud.iam.user.application.converter;
+package com.faircloud.iam.user.application.assembler;
 
 import com.faircloud.iam.user.client.module.CreateUserRequest;
 import com.faircloud.iam.user.client.module.GetUserResponse;

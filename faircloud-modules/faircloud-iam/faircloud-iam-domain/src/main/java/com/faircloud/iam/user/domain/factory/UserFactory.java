@@ -1,5 +1,8 @@
 package com.faircloud.iam.user.domain.factory;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
+
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.faircloud.iam.password.domain.service.PasswordPolicyDomainService;
 import com.faircloud.iam.user.domain.model.aggregate.UserAggregate;
@@ -11,9 +14,8 @@ import com.faircloud.iam.user.domain.persistence.UserPersistence;
 import com.faircloud.platform.common.contants.PlatformConstants;
 import com.faircloud.platform.common.enums.StatusCodeEnum;
 import com.faircloud.platform.common.exception.BusinessException;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 
 /**
  * Factory的主要作用：封装聚合内复杂对象的创建过程，完成聚合根、实体、值对象的创建。
@@ -21,7 +23,7 @@ import org.springframework.stereotype.Component;
  * 例如检查库存，计算价格，验证用户信息等。通过使用工厂，我们可以将这些逻辑封装起来，
  * 使得领域层可以更简单地创建订单对象。这样，领域层就可以专注于处理业务逻辑，而不需要关心对象的创建细节。
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Component
 @RequiredArgsConstructor
@@ -81,7 +83,7 @@ public class UserFactory {
         return aggregate;
     }
 
-    public UserAggregate createUser(String userName, String displayName, String mobilePhone, String email, String comments) {
+    public UserAggregate createUser(Long userId, String userName, String displayName, String mobilePhone, String email, String comments) {
 
         UserAggregate aggregate = new UserAggregate(IdWorker.getId());
         LoginProfileEntity loginProfile = LoginProfileEntity.builder()
@@ -101,7 +103,7 @@ public class UserFactory {
         if (userPersistence.checkUserName(aggregate.getUserName(), aggregate.getId())) {
             throw new BusinessException(StatusCodeEnum.A0111);
         }
-        aggregate.createUser(new UserAggregate(1L), userName, loginProfile, userInfo);
+        aggregate.createUser(new UserAggregate(userId), userName, loginProfile, userInfo);
         return aggregate;
     }
 }

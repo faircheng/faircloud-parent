@@ -1,18 +1,19 @@
 package com.faircloud.platform.common.module;
 
+import java.io.Serializable;
+
 import com.faircloud.platform.common.enums.StatusCode;
 import com.faircloud.platform.common.enums.StatusCodeEnum;
-import io.swagger.v3.oas.annotations.Parameter;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
 /**
  * 公用返回类
  *
- * @author fair cheng
+ * @author Felix Cheng
  */
 @Data
 @NoArgsConstructor
@@ -22,19 +23,19 @@ public class Response<T> implements Serializable {
     /**
      * http 状态码
      */
-    @Parameter(name = "状态码", description = "200")
+    @Schema(title = "状态码", description = "200")
     private String code;
 
     /**
      * 返回信息
      */
-    @Parameter(name = "返回信息")
+    @Schema(title = "返回信息")
     private String msg;
 
     /**
      * 返回的数据
      */
-    @Parameter(name = "返回的数据")
+    @Schema(title = "返回的数据")
     private T data;
 
     public Response(String code, String msg, T data) {

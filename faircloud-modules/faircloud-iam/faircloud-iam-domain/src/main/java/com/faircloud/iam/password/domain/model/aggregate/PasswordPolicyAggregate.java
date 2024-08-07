@@ -11,7 +11,7 @@ import lombok.experimental.SuperBuilder;
 /**
  * 用户密码强度等策略信息 聚合根
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Data
 @SuperBuilder

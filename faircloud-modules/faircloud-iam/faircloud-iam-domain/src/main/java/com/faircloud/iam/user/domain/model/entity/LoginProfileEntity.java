@@ -13,7 +13,7 @@ import java.util.Date;
 /**
  * 用户登录信息
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Getter
 @SuperBuilder

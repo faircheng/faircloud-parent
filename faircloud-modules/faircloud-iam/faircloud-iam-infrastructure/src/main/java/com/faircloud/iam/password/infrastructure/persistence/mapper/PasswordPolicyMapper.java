@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 用户密码强度等策略信息 Mapper接口
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Mapper
 public interface PasswordPolicyMapper extends BaseMapper<PasswordPolicy> {

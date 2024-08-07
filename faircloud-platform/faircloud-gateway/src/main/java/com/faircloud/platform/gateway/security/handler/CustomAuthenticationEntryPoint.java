@@ -20,7 +20,7 @@ import reactor.core.publisher.Mono;
 /**
  * 用来解决匿名用户访问无权限资源时的异常
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Slf4j
 public class CustomAuthenticationEntryPoint implements ServerAuthenticationEntryPoint {

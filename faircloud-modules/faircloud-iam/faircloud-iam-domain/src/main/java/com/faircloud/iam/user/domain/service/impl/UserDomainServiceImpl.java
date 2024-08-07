@@ -1,14 +1,16 @@
 package com.faircloud.iam.user.domain.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.faircloud.iam.user.domain.persistence.UserPersistence;
 import com.faircloud.iam.user.domain.service.UserDomainService;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 /**
  * 领域服务 实现类
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Service
 @RequiredArgsConstructor

@@ -31,12 +31,12 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 
-import com.faircloud.platform.web.security.handler.CustomAccessDeniedHandler;
-import com.faircloud.platform.web.security.handler.CustomAuthenticationEntryPoint;
-import com.faircloud.platform.web.security.handler.CustomLoginFailureHandler;
-import com.faircloud.platform.web.security.handler.CustomLoginSuccessHandler;
-import com.faircloud.platform.web.security.handler.CustomLogoutHandler;
-import com.faircloud.platform.web.security.handler.CustomLogoutSuccessHandler;
+import com.faircloud.platform.auth.security.handler.CustomAccessDeniedHandler;
+import com.faircloud.platform.auth.security.handler.CustomAuthenticationEntryPoint;
+import com.faircloud.platform.auth.security.handler.CustomLoginFailureHandler;
+import com.faircloud.platform.auth.security.handler.CustomLoginSuccessHandler;
+import com.faircloud.platform.auth.security.handler.CustomLogoutHandler;
+import com.faircloud.platform.auth.security.handler.CustomLogoutSuccessHandler;
 
 /**
  * @author Joe Grandja

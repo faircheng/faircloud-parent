@@ -1,11 +1,7 @@
 package com.faircloud.platform.web.controller;
 
-import com.alibaba.fastjson2.JSON;
-import com.faircloud.platform.common.enums.StatusCodeEnum;
-import com.faircloud.platform.common.exception.BusinessException;
-import com.faircloud.platform.common.module.Response;
-import com.google.common.collect.Lists;
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
@@ -18,12 +14,18 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.List;
+import com.alibaba.fastjson2.JSON;
+import com.faircloud.platform.common.enums.StatusCodeEnum;
+import com.faircloud.platform.common.exception.BusinessException;
+import com.faircloud.platform.common.module.Response;
+import com.google.common.collect.Lists;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 自定义异常处理
  *
- * @author fair cheng
+ * @author Felix Cheng
  * @date 2019-1-11
  */
 @Slf4j

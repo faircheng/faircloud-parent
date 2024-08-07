@@ -1,6 +1,6 @@
 package com.faircloud.iam.password.application.service;
 
-import com.faircloud.iam.password.client.module.SetPasswordPolicyRequest;
+import com.faircloud.iam.settings.client.module.SetPasswordPolicyRequest;
 import com.faircloud.platform.common.application.ApplicationCmdService;
 import com.faircloud.platform.common.module.Response;
 

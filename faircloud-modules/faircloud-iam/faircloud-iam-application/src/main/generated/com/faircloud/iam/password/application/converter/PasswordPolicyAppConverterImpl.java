@@ -1,4 +1,4 @@
-package com.faircloud.iam.password.application.converter;
+package com.faircloud.iam.password.application.assembler;
 
 import com.faircloud.iam.password.client.module.GetPasswordPolicyResponse;
 import com.faircloud.iam.password.client.module.SetPasswordPolicyRequest;

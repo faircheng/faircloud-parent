@@ -12,8 +12,6 @@
  */
 package com.faircloud.platform.auth.config;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 import java.util.UUID;
 
 import org.springframework.context.annotation.Bean;
@@ -40,8 +38,8 @@ import org.springframework.security.oauth2.server.authorization.settings.ClientS
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.faircloud.platform.auth.jose.Jwks;
-import com.faircloud.platform.web.security.handler.CustomAccessDeniedHandler;
-import com.faircloud.platform.web.security.handler.CustomAuthenticationEntryPoint;
+import com.faircloud.platform.auth.security.handler.CustomAccessDeniedHandler;
+import com.faircloud.platform.auth.security.handler.CustomAuthenticationEntryPoint;
 import com.google.common.collect.Lists;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -76,7 +74,9 @@ public class AuthorizationServerConfig {
                 // 用户未登录
                 .authenticationEntryPoint(new CustomAuthenticationEntryPoint()))
             // 客户端配置
-            .oauth2Client(withDefaults());
+            .oauth2Client(Customizer.withDefaults())
+            // OAuth2登录
+            .oauth2Login(Customizer.withDefaults());
 
         return http.build();
     }

@@ -15,7 +15,7 @@ import static lombok.AccessLevel.PRIVATE;
 /**
  * 用户信息
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Getter
 @SuperBuilder

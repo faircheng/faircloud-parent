@@ -7,8 +7,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * 统一安全管理平台 IAM身份识别与访问管理
- * 
- * @author Fair Cheng
+ *
+ * @author Felix Cheng
  */
 @EnableFeignClients
 @EnableDiscoveryClient

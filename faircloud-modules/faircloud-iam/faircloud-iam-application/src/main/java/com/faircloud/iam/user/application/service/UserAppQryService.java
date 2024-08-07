@@ -1,9 +1,12 @@
 package com.faircloud.iam.user.application.service;
 
+import com.faircloud.iam.user.client.module.GetUserRequest;
 import com.faircloud.iam.user.client.module.GetUserResponse;
 import com.faircloud.iam.user.client.module.ListUserResponse;
+import com.faircloud.iam.user.client.module.ListUsersRequest;
 import com.faircloud.iam.user.client.module.LoadUserResponse;
 import com.faircloud.platform.common.application.ApplicationQryService;
+import com.faircloud.platform.common.module.PageResult;
 import com.faircloud.platform.common.module.Response;
 
 public interface UserAppQryService extends ApplicationQryService {
@@ -19,10 +22,10 @@ public interface UserAppQryService extends ApplicationQryService {
     /**
      * 根据用户名查询用户信息
      *
-     * @param userName 用户名
+     * @param request 查询参数
      * @return 用户
      */
-    Response<GetUserResponse> getByUserName(String userName);
+    Response<GetUserResponse> getUser(GetUserRequest request);
 
     /**
      * 根据手机号码查询用户信息
@@ -34,9 +37,10 @@ public interface UserAppQryService extends ApplicationQryService {
 
     /**
      * 列出用户信息
+     * @param request 查询参数
      * @return 用户数据
      */
-    Response<ListUserResponse> listUsers();
+    Response<PageResult<ListUserResponse>> listUsers(ListUsersRequest request);
 
     /**
      * 登录用，根据用户名获取用户信息

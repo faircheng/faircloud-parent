@@ -10,7 +10,7 @@ import com.faircloud.iam.user.client.api.UserClient;
 /**
  * 统一授权中心启动类
  *
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @EnableFeignClients(clients = UserClient.class)
 @EnableDiscoveryClient

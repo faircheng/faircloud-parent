@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * UserInfoMapper
- * @author Fair Cheng
+ * @author Felix Cheng
  */
 @Mapper
 public interface UserInfoMapper extends BaseMapper<UserInfo> {
